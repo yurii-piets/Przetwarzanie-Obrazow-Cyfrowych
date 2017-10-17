@@ -29,7 +29,6 @@ title('Mult by scalar');
 mul = immultiply(lena, 0.5);
 imshow(mul);
 
-
 figure(6);
 title('Mult by mask');
 mask = boolean(imread('kolo.bmp'));

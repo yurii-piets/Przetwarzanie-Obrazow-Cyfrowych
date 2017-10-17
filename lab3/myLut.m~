@@ -1,8 +1,0 @@
-function myLut( imgName, codec )
-    img = imread(imgName);
-    lutImg = intlut(img, codec);
-    subplot(2,3,1); plot(codec);
-    subplot(2,3,1); imshow(img); title('Original Img');
-    subplot(2,3,2); imshow(lutImg); title('New Img');
-end
-
