@@ -25,14 +25,15 @@ subplot(2,4,8);imhist(lena4, 256);
 %3
 figure(2);
 subplot(1,3,1);imshow(hist1);
-subplot(1,3,2);imhist(hist1, 256);
+nH = imadjust(hist1);
+subplot(1,3,2);imhist(nH, 256);
 subplot(1,3,3);imshow(imadjust(hist1));
 
 %7 - cummulated
 [H, x] = imhist(hist1);
 C = cumsum(H);
 
-C = uint8(C/max(C) * 255);
+C = uint8( C / max(C) * 255);
 lut = intlut(hist1, C);
 
 [H, x] = imhist(lut);
@@ -48,4 +49,20 @@ subplot(1,2,1); imshow(lut);
 figure(4);
 subplot(1,3,1);imshow(hist1);
 subplot(1,3,2);histeq(hist1, 256); 
-subplot(1,3,3);imshow(adapthisteq(hist1)); 
+subplot(1,3,3);imshow(adapthisteq(hist1),[]); 
+
+%14
+hist2 = imread('hist2.bmp');
+hist3 = imread('hist3.bmp');
+hist4 = imread('hist4.bmp');
+
+figure(5)
+subplot(2,2,1); imshow(hist2);
+[H, x] = imhist(hist2);
+C = cumsum(H);
+
+C = uint8( C / max(C) * 255);
+lut = intlut(hist2, C);
+subplot(2,2,2); imshow(lut);
+subplot(2,2,3); imshow(histeq(hist2));
+subplot(2,2,4); imshow(adapthisteq(hist2));
