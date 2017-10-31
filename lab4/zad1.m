@@ -22,7 +22,6 @@ subplot(2,4,6);imhist(lena2, 256);
 subplot(2,4,7);imhist(lena3, 256);
 subplot(2,4,8);imhist(lena4, 256);
 
-
 %3
 figure(2);
 subplot(1,3,1);imshow(hist1);
