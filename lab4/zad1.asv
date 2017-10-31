@@ -44,9 +44,3 @@ C = C / k;
 figure(3);
 subplot(1,2,2); hold on; plot(x, H); plot(x, C); hold off;
 subplot(1,2,1); imshow(lut);
-
-%11
-figure(4);
-subplot(1,3,1);imshow(hist1);
-subplot(1,3,2);histeq(hist1, 256); 
-subplot(1,3,3);imshow(adapthisteq(hist1)); 
