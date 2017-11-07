@@ -2,11 +2,12 @@ clearvars; close all; clc;
 
 obraz = imread('bart.bmp');
 
-progDolny = 0; %todo
-progGorny = 256; %todo
+progDolny = 189;
+progGorny = 209;
 
 obrazBW = obraz > progDolny & obraz < progGorny;
 obrazBW = uint8(obrazBW);
+obrazBW = obrazBW * 255;
 
 figure(1);
 subplot(1,3,1); imshow(obraz);
