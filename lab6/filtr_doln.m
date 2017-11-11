@@ -5,10 +5,9 @@ filtrAvg = fspecial('average', 3);
 conv = conv2(image, filtrAvg, 'same');
 conv = uint8(conv);
 
-figure(1);
-subplot(1,3,1); imshow(image);
-subplot(1,3,2); imshow(conv);
-subplot(1,3,3); imshow(imabsdiff(conv, image), []);
+subplot(3,3,1); imshow(image); title('oryginal');
+subplot(3,3,2); imshow(conv); title('average');
+subplot(3,3,3); imshow(imabsdiff(conv, image), []); title('imabsdiff');
 
 %maska
 M = [1 2 1; 2 4 2; 1 2 1];
@@ -17,16 +16,14 @@ M = M / sum(sum(M));
 convM = conv2(image, M, 'same');
 convM = uint8(convM);
 
-figure(2);
-subplot(1,3,1); imshow(image);
-subplot(1,3,2); imshow(convM);
-subplot(1,3,3); imshow(imabsdiff(convM, image), []);
+subplot(3,3,4); imshow(image); title('oryginal');
+subplot(3,3,5); imshow(convM); title('M');
+subplot(3,3,6); imshow(imabsdiff(convM, image), []); title('imabsdiff');
 
 %gaussian
 filtrG = fspecial('gaussian', 5, 0.5);
 convG = uint8(conv2(image, filtrG, 'same'));
 
-figure(3);
-subplot(1,3,1); imshow(image);
-subplot(1,3,2); imshow(convG);
-subplot(1,3,3); imshow(imabsdiff(conv, image), []);
+subplot(3,3,7); imshow(image); title('oryginal');
+subplot(3,3,8); imshow(convG); title('gaussian');
+subplot(3,3,9); imshow(imabsdiff(conv, image), []); title('imabsdiff');
