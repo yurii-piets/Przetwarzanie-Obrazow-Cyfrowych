@@ -7,7 +7,7 @@ M = M / 9;
 %scalowanie
 subplot(3,4,1); imshow(image); title('oryginal');
 
-convScaled = uint8(conv2(double(image), M, 'same')) + 128;
+convScaled = uint8(conv2(double(image), M, 'same') + 128);
 subplot(3,4,2); imshow(convScaled, []); title('skalowanie');
 
 subplot(3,4,3); imshow(image + convScaled, []); title('suma');
