@@ -27,3 +27,6 @@ convG = uint8(conv2(double(image), filtrG, 'same'));
 subplot(3,3,7); imshow(image); title('oryginal');
 subplot(3,3,8); imshow(convG); title('gaussian');
 subplot(3,3,9); imshow(imabsdiff(conv, image), []); title('imabsdiff');
+
+figure;
+mesh(filtrG);
