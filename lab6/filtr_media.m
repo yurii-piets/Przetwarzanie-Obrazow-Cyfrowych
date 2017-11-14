@@ -10,7 +10,7 @@ subplot(3,3,3); imshow(imabsdiff(med, image), []); title('imabsdiff');
 
 %usredniajca
 filtrAvg = fspecial('average', 3);
-conv = conv2(image, filtrAvg, 'same');
+conv = conv2(double(image), filtrAvg, 'same');
 conv = uint8(conv);
 
 subplot(3,3,4); imshow(image); title('oryginal');
