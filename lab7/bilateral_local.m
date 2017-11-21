@@ -6,7 +6,7 @@ function data_filtered = bilateral_local(data, local_window)
     Ncy = ceil(local_window(1)/2);
     Ncx = ceil(local_window(2)/2);
     
-    ro = 3;
+    sigma = 5;
     
     for i = 1:Nx
         patch = reshape(data(:,i), local_window);
@@ -19,7 +19,7 @@ function data_filtered = bilateral_local(data, local_window)
         dist = dist.^h;
         absValue = abs(patch - patch(Ncy, Ncx));
         
-        gamma = exp(((-1) * (absValue .* absValue)) / (2 * ro * ro));
+        gamma = exp(((-1) * (absValue .* absValue)) / (2 * sigma * sigma));
         
         data_filtered(i) = sum(sum(dist .* gamma .* patch)) / sum(sum(dist .* gamma));
     
