@@ -1,0 +1,10 @@
+clearvars; close all; clc;
+
+image = imread('dom.png');
+BW = edge(image, 'log');
+BW2 = edge(image, 'canny');
+
+subplot(1,3,1); imshow(image, []); title('oryginal');
+subplot(1,3,2); imshow(BW, []); title('log');
+subplot(1,3,3); imshow(BW2, []); title('canny');
+
