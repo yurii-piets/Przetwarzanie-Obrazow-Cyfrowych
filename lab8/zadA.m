@@ -15,6 +15,16 @@ subplot(2,3,4); imshow(imerode(image, strel('line', 10, 90)), []); title('eroded
 eroded3 = imerode(imerode(imerode(image, se), se), se);
 subplot(2,3,5); imshow(eroded3, []); title('eroded - 3 times');
 
+%manualna erozja;
+figure;
+seManual = [0 0 1;
+            0 1 0;
+            1 0 0];
+buzka = imread('buzka.bmp');
+subplot(1,2,1); imshow(buzka); title('oryginal');
+eroded = imerode(buzka, seManual);
+subplot(1,2,2); imshow(eroded, []); title('eroded - manual');
+
 %dylatacja
 se = strel('square', 3);
 figure;

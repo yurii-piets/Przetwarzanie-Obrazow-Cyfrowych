@@ -1,9 +1,9 @@
 clearvars; close all; clc;
 
 image = imread('calculator.bmp');
-SE = ones(1,71);
 
 %2,3,4
+SE = ones(1,71);
 eroded = imerode(image, SE);
 recon = imreconstruct(eroded, image); %to jest obraz tla
 diff = imabsdiff(image,recon);
