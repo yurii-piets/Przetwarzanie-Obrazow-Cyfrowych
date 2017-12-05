@@ -2,21 +2,24 @@ clearvars; close all; clc;
 
 image = imread('kwadraty.png');
 
-BW = edge(image, 'canny');
-[H, theta, rho] = hough(image, 'RhoResolution', 0.1, 'ThetaResolution', 0.5);
+BW = edge(image, 'sobel');
+[H, theta, rho] = hough(BW);
 
 figure;
 subplot(1,3,1); imshow(image, []); title('oryginal');
 subplot(1,3,2); imshow(BW, []); title('canny')
-subplot(1,3,3); imshow(H, []); title('H');
+figure;
+imshow(H, []); title('H');
 
 peaks = houghpeaks(H, 8);
 
 figure;
-subplot(1,2,1); plot(H); title('Kwadraty Hough H');
-subplot(1,2,2); plot(peaks); title('Kwadraty Hough Peaks');
+%subplot(1,2,1); plot(H); title('Kwadraty Hough H');
+%subplot(1,2,2);
+plot(peaks, 'o'); title('Kwadraty Hough Peaks');
 
-lines = houghlines(image, theta, rho, peaks, 'FillGap', 5, 'MinLength', 7);
+%lines = houghlines(image, theta, rho, peaks, 'FillGap', 5, 'MinLength', 7);
+lines = houghlines(BW, theta, rho, peaks);
 
 figure;
 hold on;
@@ -39,3 +42,4 @@ end
 
 % highlight the longest line segment
 plot(xy_long(:,1),xy_long(:,2),'LineWidth',2,'Color','blue');
+hold off;

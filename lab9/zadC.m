@@ -2,14 +2,18 @@ clearvars; close all; clc;
 
 image = imread('lab112.png');
 
-edge = edge(image, 'canny', [0.1 0.8]);
+image = im2bw(image, 0.2);
+
+image = imdilate(image, ones(3,10));
+
+edge = edge(image, 'sobel');
 
 imshow(image, []); title('oryginal');
 
 [H, theta, rho] = hough(edge, 'RhoResolution',0.1, 'ThetaResolution', 0.5);
 peaks = houghpeaks(H, 8);
 lines = houghlines(edge, theta, rho, peaks, 'FillGap', 5, 'MinLength', 7);
- 
+
 figure;
 imshow(edge); hold on;
 max_len = 0;
@@ -29,3 +33,5 @@ for k = 1:length(lines)
    end
 end
 plot(xy_long(:,1),xy_long(:,2),'LineWidth',2,'Color','cyan');
+
+hold off;

@@ -10,8 +10,8 @@ subplot(2,3,1); imshow(image, []); title('oryginal');
 subplot(2,3,2); imshow(BW, []); title('log');
 subplot(2,3,3); imshow(BW2, []); title('canny');
 
-BW = edge(image, 'log', 0.5, 0.4);
-BW2 = edge(image, 'canny', 0.4, 0.1);
+BW = edge(image, 'log', 0.009, 2);
+BW2 = edge(image, 'canny', 0.1, 1.8);
 
 subplot(2,3,4); imshow(image, []); title('oryginal');
 subplot(2,3,5); imshow(BW, []); title('log');

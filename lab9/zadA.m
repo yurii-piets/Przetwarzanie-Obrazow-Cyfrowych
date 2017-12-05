@@ -5,19 +5,21 @@ image(4,4) = 1;
 image(1,6) = 1;
 image(10,3) = 1;
 
-[H, theta, ro] = hough(image, 'RhoResolution', 0.1, 'ThetaResolution', 0.5);
+[H, theta, rho] = hough(image, 'RhoResolution', 0.1, 'ThetaResolution', 0.5);
 
+figure;
 imshow(H, []);
 
-X = 182;
-Y = 193;
+X = 248;
+Y = 185;
 
 t = theta(X);
-r = ro(Y);
+r = rho(Y);
 
 xx = 0:0.1:10;
-yy = ((r-xx*cos(t))/sin(t));
+yy = ((r-xx*cosd(t))/sind(t));
 
+figure;
 imshow(image);
 hold on;
 plot(xx+1, yy+1);
