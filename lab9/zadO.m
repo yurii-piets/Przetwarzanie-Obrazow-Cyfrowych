@@ -1,7 +1,9 @@
 clearvars; close all; clc;
 
 image = imread('dom.png');
+%a
 BW = edge(image, 'log');
+%b
 BW2 = edge(image, 'canny');
 
 subplot(2,3,1); imshow(image, []); title('oryginal');
