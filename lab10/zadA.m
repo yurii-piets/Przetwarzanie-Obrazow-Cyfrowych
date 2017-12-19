@@ -17,12 +17,16 @@ stack(iStack, :) = [x, y];
 visited(x, y) = 1;
 segmented(x, y) = image(x, y);
 
-BRD = 4;
+BRD = 40;
+mV = image(x, y);
+nS = 1;
 
 while iStack > 0
     x = stack(iStack, 1);
     y = stack(iStack, 2);
     iStack = iStack - 1;
+    nS = nS + 1;
+    mV = (mV * (nS - 1) + image(x, y)) / nS;
     
     if x <= 1 || x >= n
         continue;
@@ -47,7 +51,7 @@ while iStack > 0
             visited(x+i, y+j) = 1;
             
             brightnessLocal = image(x+i, y+j);
-            diff = abs(brightness - brightnessLocal);
+            diff = abs(mV - brightnessLocal);
             
             if diff < BRD
                 segmented(x+i, y+j) = image(x+i, y+j);
@@ -60,6 +64,10 @@ while iStack > 0
     
 end;
 
-subplot(1,3,1); imshow(image, []); title('oryginal');
-subplot(1,3,2); imshow(visited, []); title('visited');
-subplot(1,3,3); imshow(segmented, []); title('segmented');
+h = fspecial('gaussian', [3 3], 4);
+filtered = imfilter(segmented, h);
+
+subplot(1,4,1); imshow(image, []); title('oryginal');
+subplot(1,4,2); imshow(visited, []); title('visited');
+subplot(1,4,3); imshow(segmented, []); title('segmented');
+subplot(1,4,4); imshow(filtered, []); title('filtered');
