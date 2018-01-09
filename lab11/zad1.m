@@ -1,16 +1,16 @@
+%TODO find bug
 close all; clearvars; clc;
 
 image = imread('ccl1.png');
 
 [YY, XX] = size(image);
-imageFinal = zeros(size(image));
+imageFinal = image;
 
 L = 1;
-X = 1;
 
 for x=2:YY-1
     for y=2:XX-1
-        %TODO find bug and finish it
+        
         if image(x, y) == 0
             continue;
         end;
@@ -27,7 +27,7 @@ for x=2:YY-1
             minV = min(sasiedzi);
             
             if minV == maxV
-                imageFinal(x,y) = minV;
+                imageFinal(x,y) = maxV;
             else
                 imageFinal(x,y) = minV;
             end;
@@ -37,5 +37,5 @@ for x=2:YY-1
 end;
 
 subplot(1,3,1); imshow(image, []); title('oryginal');
-subplot(1,3,2); imshow(imageFinal, []); title('final');
-subplot(1,3,3); imshow(imread('ccl1Result.png'), []); title('final');
+subplot(1,3,2); imshow(label2rgb(imageFinal)); title('final');
+subplot(1,3,3); imshow(imread('ccl1Result.png'), []); title('ccl1Result.png');
