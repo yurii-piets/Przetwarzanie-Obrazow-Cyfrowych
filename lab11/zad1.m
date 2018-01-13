@@ -1,4 +1,3 @@
-%TODO find bug
 close all; clearvars; clc;
 
 image = imread('ccl1.png');
@@ -15,24 +14,23 @@ for x=2:YY-1
             continue;
         end;
         
-        sasiedzi = [image(x-1, y-1) image(x-1, y) image(x-1, y+1) image(x, y-1)];
-        suma = sum(sasiedzi);
-        
-        if suma == 0
-            imageFinal(x,y) = L;
-            L = L + 1;
-        elseif suma > 0
-            sasiedzi = nonzeros(sasiedzi);
-            maxV = max(sasiedzi);
-            minV = min(sasiedzi);
-            
-            if minV == maxV
-                imageFinal(x,y) = maxV;
-            else
-                imageFinal(x,y) = minV;
+            sasiedzi = [imageFinal(x-1, y-1) imageFinal(x-1, y) imageFinal(x-1, y+1) imageFinal(x, y-1)];
+            suma = sum(sasiedzi);
+
+            if suma == 0
+                imageFinal(x,y) = L;
+                L = L + 1;
+            elseif suma > 0
+                sasiedzi = nonzeros(sasiedzi);
+                maxV = max(sasiedzi);
+                minV = min(sasiedzi);
+
+                if minV == maxV
+                    imageFinal(x,y) = maxV;
+                else
+                    imageFinal(x,y) = minV;
+                end;
             end;
-        end;
-        
     end;
 end;
 
