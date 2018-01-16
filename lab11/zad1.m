@@ -58,5 +58,6 @@ end
 
 imshow(label2rgb(imageFinal));
 
+figure;
 subplot(1,2,1); imshow(image, []); title('oryginal');
 subplot(1,2,2); imshow(label2rgb(imageFinal)); title('final');
